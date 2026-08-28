@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProfileType {
+  ADMIN
+  USUARIO
+  VISITANTE
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  password String
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt()
+  profile ProfileType @default(USUARIO)
+}
+
+model Filme {
+  id            String   @id @default(cuid())
+  titulo        String
+  sinopse       String
+  classificacao String
+  duracao       Int
+  genero        String
+  dataInicio    String
+  dataFim       String
+  sessoes       Sessao[]
+}
+
+model Sala {
+  id         String   @id @default(cuid())
+  numero     Int      @unique
+  capacidade Int
+  sessoes    Sessao[]
+}
+
+model Sessao {
+  id         String     @id @default(cuid())
+  filmeId    String
+  filme      Filme      @relation(fields: [filmeId], references: [id])
+  salaId     String
+  sala       Sala       @relation(fields: [salaId], references: [id])
+  dataHora   String
+  precoBase  Float
+  ingressos  Ingresso[]
+  pedidos    Pedido[]
+}
+
+enum TipoIngresso {
+  inteira
+  meia
+}
+
+model Ingresso {
+  id           String       @id @default(cuid())
+  pedidoId     String?
+  pedido       Pedido?      @relation(fields: [pedidoId], references: [id], onDelete: SetNull)
+  sessaoId     String
+  sessao       Sessao       @relation(fields: [sessaoId], references: [id])
+  tipo         TipoIngresso
+  valorInteira Float
+  valorMeia    Float
+  valorFinal   Float
+  dataCompra   String
+}
+
+model LancheCombo {
+  id            String       @id @default(cuid())
+  nome          String
+  descricao     String
+  valorUnitario Float
+  itensPedidos  ItemPedido[]
+}
+
+// Representa o lanche dentro do pedido (mantendo o histórico do preço da venda)
+model ItemPedido {
+  id            String       @id @default(cuid())
+  pedidoId      String
+  pedido        Pedido       @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  lancheComboId String?
+  lancheCombo   LancheCombo? @relation(fields: [lancheComboId], references: [id], onDelete: SetNull)
+  nome          String
+  valorUnitario Float
+  qtUnidade     Int
+  subtotal      Float
+}
+
+model Pedido {
+  id             String       @id @default(cuid())
+  sessaoId       String
+  sessao         Sessao       @relation(fields: [sessaoId], references: [id])
+  dataPedido     String
+  qtInteira      Int
+  qtMeia         Int
+  valorIngressos Float
+  valorLanches   Float
+  valorTotal     Float
+  ingressos      Ingresso[]
+  lanches        ItemPedido[]
+}

@@ -1,0 +1,70 @@
+# ---- Dependências ----
+node_modules/
+
+# ---- Build / saída compilada ----
+/dist
+/build
+*.tsbuildinfo
+
+# ---- Prisma ----
+# O client é gerado por `prisma generate` — nunca versionar.
+# As migrations em prisma/migrations FICAM versionadas.
+/generated
+
+# ---- Variáveis de ambiente ----
+# Ignora todo .env real; só o exemplo com placeholders é versionado.
+.env
+.env.*
+!.env.example
+
+# ---- Logs ----
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ---- Testes e cobertura ----
+/coverage
+/.nyc_output
+
+# ---- Caches de ferramentas ----
+.eslintcache
+.prettiercache
+.cache/
+.temp/
+.tmp/
+
+# ---- Runtime ----
+pids
+*.pid
+*.seed
+*.pid.lock
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ---- Banco local (SQLite), se algum dia for usado ----
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ---- Editores ----
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.sublime-workspace
+*.swp
+*.launch
+.project
+.classpath
+.settings/
+
+# ---- Sistema operacional ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini

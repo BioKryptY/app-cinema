@@ -1,0 +1,50 @@
+# ---- Dependências ----
+node_modules/
+
+# ---- Build / saída do Vite ----
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# ---- Variáveis de ambiente ----
+# Ignora todo .env real; só o exemplo com placeholders é versionado.
+.env
+.env.*
+!.env.example
+*.local
+
+# ---- Logs ----
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ---- Testes e cobertura ----
+coverage/
+
+# ---- Caches de ferramentas ----
+.eslintcache
+.cache/
+.vite/
+
+# ---- Editores ----
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ---- Sistema operacional ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+*.pdf

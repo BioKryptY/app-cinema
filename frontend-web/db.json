@@ -1,0 +1,262 @@
+{
+  "filmes": [
+    {
+      "id": "1",
+      "titulo": "Inception",
+      "sinopse": "Um ladrão especializado em roubar segredos corporativos através do uso da tecnologia de compartilhamento de sonhos recebe a tarefa inversa: implantar uma ideia na mente de um CEO.",
+      "classificacao": "14",
+      "duracao": 148,
+      "genero": "Ficcao Cientifica",
+      "dataInicio": "2026-08-20",
+      "dataFim": "2026-09-30"
+    },
+    {
+      "id": "2",
+      "titulo": "O Poderoso Chefao",
+      "sinopse": "A saga da família Corleone, uma das mais poderosas da máfia italiana, explorando poder, traição e redenção ao longo de gerações.",
+      "classificacao": "18",
+      "duracao": 175,
+      "genero": "Drama",
+      "dataInicio": "2026-08-24",
+      "dataFim": "2026-09-24"
+    },
+    {
+      "id": "3",
+      "titulo": "Vingadores: Ultimato",
+      "sinopse": "Após os eventos devastadores de Guerra Infinita, os Vingadores restantes se unem uma última vez para reverter as ações de Thanos e restaurar a ordem no universo.",
+      "classificacao": "12",
+      "duracao": 181,
+      "genero": "Acao",
+      "dataInicio": "2026-08-20",
+      "dataFim": "2026-09-30"
+    },
+    {
+      "id": "4",
+      "titulo": "Interestelar",
+      "sinopse": "Uma equipe de exploradores viaja através de um buraco de minhoca no espaço na tentativa de garantir a sobrevivência da humanidade.",
+      "classificacao": "10",
+      "duracao": 169,
+      "genero": "Ficcao Cientifica",
+      "dataInicio": "2026-08-24",
+      "dataFim": "2026-09-27"
+    },
+    {
+      "id": "5",
+      "titulo": "O Rei Leao",
+      "sinopse": "Após a morte de seu pai, um jovem leão foge de seu reino apenas para aprender o verdadeiro significado de responsabilidade e coragem.",
+      "classificacao": "L",
+      "duracao": 118,
+      "genero": "Animacao",
+      "dataInicio": "2026-08-20",
+      "dataFim": "2026-09-20"
+    },
+    {
+      "id": "6",
+      "titulo": "Coringa",
+      "sinopse": "Em Gotham City, Arthur Fleck, um comediante fracassado, é desrespeitado e maltratado pela sociedade. Ele então começa uma lenta descida à loucura, tornando-se o criminoso conhecido como Coringa.",
+      "classificacao": "18",
+      "duracao": 122,
+      "genero": "Drama",
+      "dataInicio": "2026-08-28",
+      "dataFim": "2026-09-30"
+    },
+    {
+      "id": "7",
+      "titulo": "Procurando Nemo",
+      "sinopse": "Após seu filho ser capturado, um peixe-palhaço tímido parte em uma jornada para resgatá-lo das águas da Austrália com a ajuda de sua companheira de viagem.",
+      "classificacao": "L",
+      "duracao": 100,
+      "genero": "Animacao",
+      "dataInicio": "2026-08-20",
+      "dataFim": "2026-09-15"
+    }
+  ],
+  "salas": [
+    {
+      "id": "1",
+      "numero": 1,
+      "capacidade": 120
+    },
+    {
+      "id": "2",
+      "numero": 2,
+      "capacidade": 80
+    },
+    {
+      "id": "3",
+      "numero": 3,
+      "capacidade": 150
+    },
+    {
+      "id": "4",
+      "numero": 4,
+      "capacidade": 60
+    },
+    {
+      "id": "5",
+      "numero": 5,
+      "capacidade": 200
+    }
+  ],
+  "sessoes": [
+    {
+      "id": "3",
+      "filmeId": "3",
+      "salaId": "5",
+      "dataHora": "2026-08-28T14:00",
+      "precoBase": 40
+    },
+    {
+      "id": "4",
+      "filmeId": "3",
+      "salaId": "3",
+      "dataHora": "2026-08-28T17:30",
+      "precoBase": 40
+    },
+    {
+      "id": "5",
+      "filmeId": "4",
+      "salaId": "1",
+      "dataHora": "2026-08-29T21:00",
+      "precoBase": 35
+    },
+    {
+      "id": "6",
+      "filmeId": "5",
+      "salaId": "4",
+      "dataHora": "2026-08-30T10:00",
+      "precoBase": 25
+    },
+    {
+      "id": "7",
+      "filmeId": "5",
+      "salaId": "4",
+      "dataHora": "2026-08-30T14:00",
+      "precoBase": 25
+    },
+    {
+      "id": "8",
+      "filmeId": "6",
+      "salaId": "2",
+      "dataHora": "2026-09-01T22:00",
+      "precoBase": 38
+    },
+    {
+      "id": "9",
+      "filmeId": "7",
+      "salaId": "3",
+      "dataHora": "2026-09-02T11:00",
+      "precoBase": 22
+    },
+    {
+      "id": "10",
+      "filmeId": "1",
+      "salaId": "5",
+      "dataHora": "2026-09-04T19:00",
+      "precoBase": 32
+    }
+  ],
+  "ingressos": [
+    {
+      "id": "48cf",
+      "pedidoId": "0a21",
+      "sessaoId": "3",
+      "tipo": "inteira",
+      "valorInteira": 40,
+      "valorMeia": 20,
+      "valorFinal": 40,
+      "dataCompra": "2026-08-28T00:11:35.807Z"
+    },
+    {
+      "id": "8561",
+      "pedidoId": "0a21",
+      "sessaoId": "3",
+      "tipo": "inteira",
+      "valorInteira": 40,
+      "valorMeia": 20,
+      "valorFinal": 40,
+      "dataCompra": "2026-08-28T00:11:35.807Z"
+    },
+    {
+      "id": "aead",
+      "pedidoId": "0a21",
+      "sessaoId": "3",
+      "tipo": "meia",
+      "valorInteira": 40,
+      "valorMeia": 20,
+      "valorFinal": 20,
+      "dataCompra": "2026-08-28T00:11:35.807Z"
+    }
+  ],
+  "lanchesCombos": [
+    {
+      "id": "1",
+      "nome": "Pipoca Pequena",
+      "descricao": "Balde de pipoca salgada de 90g, feita na hora.",
+      "valorUnitario": 18
+    },
+    {
+      "id": "2",
+      "nome": "Pipoca Grande",
+      "descricao": "Balde de pipoca salgada de 180g, feita na hora.",
+      "valorUnitario": 26
+    },
+    {
+      "id": "3",
+      "nome": "Refrigerante 500ml",
+      "descricao": "Copo de refrigerante gelado de 500ml, sabor a escolher.",
+      "valorUnitario": 12
+    },
+    {
+      "id": "4",
+      "nome": "Agua Mineral 500ml",
+      "descricao": "Garrafa de agua mineral sem gas de 500ml.",
+      "valorUnitario": 7
+    },
+    {
+      "id": "5",
+      "nome": "Combo Individual",
+      "descricao": "Uma pipoca grande acompanhada de um refrigerante de 500ml.",
+      "valorUnitario": 35
+    },
+    {
+      "id": "6",
+      "nome": "Combo Casal",
+      "descricao": "Duas pipocas grandes acompanhadas de dois refrigerantes de 500ml.",
+      "valorUnitario": 62
+    },
+    {
+      "id": "7",
+      "nome": "Nachos com Cheddar",
+      "descricao": "Porcao de nachos crocantes servida com molho cheddar quente.",
+      "valorUnitario": 24
+    },
+    {
+      "id": "8",
+      "nome": "Chocolate",
+      "descricao": "Barra de chocolate ao leite de 90g.",
+      "valorUnitario": 15
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "0a21",
+      "sessaoId": "3",
+      "dataPedido": "2026-08-28T00:11:35.807Z",
+      "qtInteira": 2,
+      "qtMeia": 1,
+      "lanches": [
+        {
+          "lancheComboId": "4",
+          "nome": "Agua Mineral 500ml",
+          "valorUnitario": 7,
+          "qtUnidade": 2,
+          "subtotal": 14
+        }
+      ],
+      "valorIngressos": 100,
+      "valorLanches": 14,
+      "valorTotal": 114
+    }
+  ]
+}
