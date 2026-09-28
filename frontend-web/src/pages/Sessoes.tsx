@@ -10,6 +10,7 @@ import {
   excluirIngressosPorSessao,
   excluirPedidosPorSessao,
 } from '../services/api';
+import { estaLogado } from '../services/auth';
 import { mesmoId } from '../utils';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AlertMessage from '../components/AlertMessage';
@@ -17,6 +18,7 @@ import ConfirmModal from '../components/ConfirmModal';
 import VendaIngressoModal from '../components/VendaIngressoModal';
 
 export default function Sessoes() {
+  const logado = estaLogado();
   const [sessoes, setSessoes] = useState<SessaoComDetalhes[]>([]);
   const [filmes, setFilmes] = useState<Filme[]>([]);
   const [salas, setSalas] = useState<Sala[]>([]);
@@ -51,7 +53,8 @@ export default function Sessoes() {
       // Cruzar dados e adicionar contagem de ingressos
       const sessoesComDetalhes: SessaoComDetalhes[] = await Promise.all(
         sessoesData.map(async (sessao) => {
-          const ingressos = await buscarIngressosPorSessao(sessao.id!);
+          // Ingressos só com login (sem login o backend responde 401)
+          const ingressos = estaLogado() ? await buscarIngressosPorSessao(sessao.id!) : [];
           return {
             ...sessao,
             filme: filmesData.find(f => mesmoId(f.id, sessao.filmeId)),
@@ -219,17 +222,21 @@ export default function Sessoes() {
                         R$ {sessao.precoBase.toFixed(2)}
                       </td>
                       <td className="text-center">
-                        <div className="d-flex flex-column align-items-center">
-                          <span className="fw-semibold">
-                            {sessao.ingressosVendidos} / {sessao.sala?.capacidade || '?'}
-                          </span>
-                          <div className="progress mt-1" style={{ width: '60px', height: '6px' }}>
-                            <div
-                              className={`progress-bar ${lotacao >= 90 ? 'bg-danger' : lotacao >= 70 ? 'bg-warning' : 'bg-success'}`}
-                              style={{ width: `${lotacao}%` }}
-                            ></div>
+                        {logado ? (
+                          <div className="d-flex flex-column align-items-center">
+                            <span className="fw-semibold">
+                              {sessao.ingressosVendidos} / {sessao.sala?.capacidade || '?'}
+                            </span>
+                            <div className="progress mt-1" style={{ width: '60px', height: '6px' }}>
+                              <div
+                                className={`progress-bar ${lotacao >= 90 ? 'bg-danger' : lotacao >= 70 ? 'bg-warning' : 'bg-success'}`}
+                                style={{ width: `${lotacao}%` }}
+                              ></div>
+                            </div>
                           </div>
-                        </div>
+                        ) : (
+                          <span className="text-muted">—</span>
+                        )}
                       </td>
                       <td className="text-center">
                         {passada ? (
@@ -246,7 +253,7 @@ export default function Sessoes() {
                       </td>
                       <td className="text-center">
                         <div className="btn-group btn-group-sm">
-                          {!passada && sessao.ingressosVendidos! < (sessao.sala?.capacidade || 0) && (
+                          {logado && !passada && sessao.ingressosVendidos! < (sessao.sala?.capacidade || 0) && (
                             <button
                               className="btn btn-success"
                               onClick={() => setVendaModal({ show: true, sessao })}
