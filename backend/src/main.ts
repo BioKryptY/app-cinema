@@ -6,7 +6,8 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(new ValidationPipe()); // Ativa validação dos DTOs
+  // whitelist: descarta campos que não estão no DTO (ex.: o "id" que o frontend manda junto)
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true })); // Ativa validação dos DTOs
 
   const config = new DocumentBuilder()
   .setTitle('Documentação da API - CineWeb')
