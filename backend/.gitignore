@@ -9,7 +9,9 @@ node_modules/
 # ---- Prisma ----
 # O client é gerado por `prisma generate` — nunca versionar.
 # As migrations em prisma/migrations FICAM versionadas.
-/generated
+# Saída atual (output do schema.prisma) e a antiga, caso sobre alguma cópia.
+/src/generated/
+/generated/
 
 # ---- Variáveis de ambiente ----
 # Ignora todo .env real; só o exemplo com placeholders é versionado.
