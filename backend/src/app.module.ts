@@ -8,9 +8,10 @@ import { SalasModule } from './salas/salas.module';
 import { FilmesModule } from './filmes/filmes.module';
 import { LanchesCombosModule } from './lanches-combos/lanches-combos.module';
 import { SessoesModule } from './sessoes/sessoes.module';
+import { IngressosModule } from './ingressos/ingressos.module';
 
 @Module({
-  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule, SessoesModule],
+  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule, SessoesModule, IngressosModule],
   controllers: [AppController],
   providers: [AppService],
 })

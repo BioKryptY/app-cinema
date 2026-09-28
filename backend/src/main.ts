@@ -19,6 +19,7 @@ async function bootstrap() {
   .addTag('filmes')
   .addTag('lanchesCombos')
   .addTag('sessoes')
+  .addTag('ingressos')
   .addBearerAuth(
     {
       type: 'http',
