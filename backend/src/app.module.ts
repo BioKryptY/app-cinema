@@ -1,9 +1,18 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PrismaModule } from './prisma/prisma.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { SalasModule } from './salas/salas.module';
+import { FilmesModule } from './filmes/filmes.module';
+import { LanchesCombosModule } from './lanches-combos/lanches-combos.module';
+import { SessoesModule } from './sessoes/sessoes.module';
+import { IngressosModule } from './ingressos/ingressos.module';
+import { PedidosModule } from './pedidos/pedidos.module';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule, SessoesModule, IngressosModule, PedidosModule],
   controllers: [AppController],
   providers: [AppService],
 })
