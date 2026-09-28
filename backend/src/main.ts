@@ -17,6 +17,7 @@ async function bootstrap() {
   .addTag('auth')
   .addTag('salas')
   .addTag('filmes')
+  .addTag('lanchesCombos')
   .addBearerAuth(
     {
       type: 'http',
