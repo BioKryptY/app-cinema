@@ -20,6 +20,7 @@ async function bootstrap() {
   .addTag('lanchesCombos')
   .addTag('sessoes')
   .addTag('ingressos')
+  .addTag('pedidos')
   .addBearerAuth(
     {
       type: 'http',

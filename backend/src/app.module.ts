@@ -9,9 +9,10 @@ import { FilmesModule } from './filmes/filmes.module';
 import { LanchesCombosModule } from './lanches-combos/lanches-combos.module';
 import { SessoesModule } from './sessoes/sessoes.module';
 import { IngressosModule } from './ingressos/ingressos.module';
+import { PedidosModule } from './pedidos/pedidos.module';
 
 @Module({
-  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule, SessoesModule, IngressosModule],
+  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule, SessoesModule, IngressosModule, PedidosModule],
   controllers: [AppController],
   providers: [AppService],
 })
