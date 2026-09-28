@@ -7,9 +7,10 @@ import { AuthModule } from './auth/auth.module';
 import { SalasModule } from './salas/salas.module';
 import { FilmesModule } from './filmes/filmes.module';
 import { LanchesCombosModule } from './lanches-combos/lanches-combos.module';
+import { SessoesModule } from './sessoes/sessoes.module';
 
 @Module({
-  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule],
+  imports: [PrismaModule, UsersModule, AuthModule, SalasModule, FilmesModule, LanchesCombosModule, SessoesModule],
   controllers: [AppController],
   providers: [AppService],
 })
