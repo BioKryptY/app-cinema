@@ -11,26 +11,30 @@ import Ingressos from '../pages/Ingressos';
 import LanchesCombos from '../pages/LanchesCombos';
 import LancheComboForm from '../pages/LancheComboForm';
 import Pedidos from '../pages/Pedidos';
+import RotaProtegida from '../components/RotaProtegida';
 
 function AppRoutes() {
   return (
     <Routes>
+      {/* Abertas: qualquer pessoa vê */}
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/filmes" element={<Filmes />} />
-      <Route path="/filmes/novo" element={<FilmeForm />} />
-      <Route path="/filmes/editar/:id" element={<FilmeForm />} />
       <Route path="/salas" element={<Salas />} />
-      <Route path="/salas/nova" element={<SalaForm />} />
-      <Route path="/salas/editar/:id" element={<SalaForm />} />
       <Route path="/sessoes" element={<Sessoes />} />
-      <Route path="/sessoes/nova" element={<SessaoForm />} />
-      <Route path="/sessoes/editar/:id" element={<SessaoForm />} />
       <Route path="/lanches-combos" element={<LanchesCombos />} />
-      <Route path="/lanches-combos/novo" element={<LancheComboForm />} />
-      <Route path="/lanches-combos/editar/:id" element={<LancheComboForm />} />
-      <Route path="/ingressos" element={<Ingressos />} />
-      <Route path="/pedidos" element={<Pedidos />} />
+
+      {/* Só com login */}
+      <Route path="/filmes/novo" element={<RotaProtegida><FilmeForm /></RotaProtegida>} />
+      <Route path="/filmes/editar/:id" element={<RotaProtegida><FilmeForm /></RotaProtegida>} />
+      <Route path="/salas/nova" element={<RotaProtegida><SalaForm /></RotaProtegida>} />
+      <Route path="/salas/editar/:id" element={<RotaProtegida><SalaForm /></RotaProtegida>} />
+      <Route path="/sessoes/nova" element={<RotaProtegida><SessaoForm /></RotaProtegida>} />
+      <Route path="/sessoes/editar/:id" element={<RotaProtegida><SessaoForm /></RotaProtegida>} />
+      <Route path="/lanches-combos/novo" element={<RotaProtegida><LancheComboForm /></RotaProtegida>} />
+      <Route path="/lanches-combos/editar/:id" element={<RotaProtegida><LancheComboForm /></RotaProtegida>} />
+      <Route path="/ingressos" element={<RotaProtegida><Ingressos /></RotaProtegida>} />
+      <Route path="/pedidos" element={<RotaProtegida><Pedidos /></RotaProtegida>} />
     </Routes>
   );
 }

@@ -1,6 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { estaLogado, removerToken } from '../services/auth';
 
 export default function Navbar() {
+  useLocation(); // faz a barra se atualizar a cada troca de página (ex.: logo depois do login)
+  const navigate = useNavigate();
+  const logado = estaLogado();
+
+  function sair() {
+    removerToken();
+    navigate('/login');
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark shadow-lg">
       <div className="container">
@@ -99,6 +109,19 @@ export default function Navbar() {
                 <i className="bi bi-receipt me-2"></i>
                 Pedidos
               </NavLink>
+            </li>
+            <li className="nav-item d-flex align-items-center ms-lg-2 mt-2 mt-lg-0">
+              {logado ? (
+                <button className="btn btn-outline-light btn-sm" onClick={sair}>
+                  <i className="bi bi-box-arrow-right me-1"></i>
+                  Sair
+                </button>
+              ) : (
+                <NavLink className="btn btn-warning btn-sm" to="/login">
+                  <i className="bi bi-box-arrow-in-right me-1"></i>
+                  Entrar
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>
