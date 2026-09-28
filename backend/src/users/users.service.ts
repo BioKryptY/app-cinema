@@ -4,6 +4,9 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 
+// Nunca devolver a senha (nem criptografada) nas respostas da API
+const semSenha = { password: true } as const;
+
 @Injectable()
 export class UsersService {
   constructor(private prisma: PrismaService) {}
@@ -14,9 +17,11 @@ export class UsersService {
 
     return this.prisma.user.create({
       data: { ...createUserDto, password: hash},
+      omit: semSenha,
     });
   }
 
+  // Único que devolve a senha: o login precisa dela para comparar
   async findByEmail(email: string) {
     return this.prisma.user.findUnique({
       where: { email },
@@ -24,25 +29,34 @@ export class UsersService {
   }
 
   findAll() {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({ omit: semSenha });
   }
 
   findOne(id: number) {
     return this.prisma.user.findUnique({
       where: { id },
+      omit: semSenha,
     });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    // Se trocar a senha, salva criptografada, igual ao cadastro (senão o login para de funcionar)
+    if (updateUserDto.password) {
+      const salt = await bcrypt.genSalt();
+      updateUserDto.password = await bcrypt.hash(updateUserDto.password, salt);
+    }
+
     return this.prisma.user.update({
       where: { id },
       data: updateUserDto,
+      omit: semSenha,
     });
   }
 
   remove(id: number) {
     return this.prisma.user.delete({
       where: { id },
+      omit: semSenha,
     });
   }
 }
