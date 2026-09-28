@@ -9,6 +9,9 @@ async function bootstrap() {
   // whitelist: descarta campos que não estão no DTO (ex.: o "id" que o frontend manda junto)
   app.useGlobalPipes(new ValidationPipe({ whitelist: true })); // Ativa validação dos DTOs
 
+  // Deixa o frontend (Vite, porta 5173) chamar esta API
+  app.enableCors({ origin: 'http://localhost:5173' });
+
   const config = new DocumentBuilder()
   .setTitle('Documentação da API - CineWeb')
   .setDescription('CineWeb - API')
