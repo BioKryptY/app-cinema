@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
+import Login from '../pages/Login';
 import Filmes from '../pages/Filmes';
 import FilmeForm from '../pages/FilmeForm';
 import Salas from '../pages/Salas';
@@ -15,6 +16,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/filmes" element={<Filmes />} />
       <Route path="/filmes/novo" element={<FilmeForm />} />
       <Route path="/filmes/editar/:id" element={<FilmeForm />} />
